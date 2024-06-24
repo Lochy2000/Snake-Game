@@ -72,6 +72,15 @@ body {
     border: #182703 1px;
 }
 
+.food{
+    background-image: url(snake-logo.png);
+    border: #999 4px solid;
+}
+.food2{
+    background-color: #c23333;
+    border: #f3d933 4px solid;
+}
+
 .apple {
     background-color: red;
 
