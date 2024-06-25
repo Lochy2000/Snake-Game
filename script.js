@@ -2,6 +2,7 @@
 const board = document.getElementById('game-board');
 const intructionText = document.getElementById('instruction-text')
 const logo = document.getElementById('logo');
+const score = document.getElementById('score');
 
 // Define game variables
 const gridSize = 20
@@ -17,6 +18,7 @@ function draw() {
     board.innerHTML = ''; // resets board to empty
     drawSnake();
     drawFood();
+    updateScore();
 }
 
 // Draw snake 
@@ -179,3 +181,7 @@ function resetGame (){
     updateScore(); // adds highscore
 }
 
+function updateScore(){
+    const currentScore = snake.length -1; //snake length starts at 1, need to -1 to make score 0
+    score.textContent = currentScore.toString().padStart(3,'0'); // setting score text content, turning into a string of trip digit numbers. Giving the 3 score numbers.
+}
