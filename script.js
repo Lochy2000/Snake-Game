@@ -84,6 +84,7 @@ function move() {
     // this if statement allows the snake to unshift when it hits a food element. 
     if (head.x === food.x && head.y === food.y) {
         food = generateFood(); // food has been eaten, new food needed
+        increaseSpeed();
         clearInterval(gameInterval);// clear past interval
         gameInterval = setInterval(() => {
             move();
@@ -152,5 +153,19 @@ function handleKeyPress(event) {
         gameSpeedDelay -= 2;
     } else if (gameSpeedDelay > 25) {
         gameSpeedDelay -= 1;
+    }
+}
+
+// Check collistion function, will reset the game when the head hits the border of the walls.
+function checkCollistion (){
+    const head = snake [0];
+    if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize){
+        resetGame();
+    }
+
+    for (let i = 1; i < snake.length; i++){
+        if (head.x === snake[i].x && snake.y === snake[i].y){
+            resetGame();
+        } // checking if the head is in the same position of the snake body in the using i.
     }
 }
