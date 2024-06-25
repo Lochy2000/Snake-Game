@@ -1,5 +1,7 @@
 // define HTML elements
 const board = document.getElementById('game-board');
+const intructionText = document.getElementById('instruction-text')
+const logo = document.getElementById('logo');
 
 // Define game variables
 const gridSize = 20
@@ -8,6 +10,7 @@ let food = generateFood();
 let direction = 'right';
 let gameInterval;
 let gameSpeedDelay = 200;
+let gameStarted = false;
 
 // Adds game map, snake and food
 function draw() {
@@ -77,7 +80,7 @@ function move() {
 
     snake.unshift (head); // this adds another head element onto the current one
 
-    // this if statement allows the snake to unshift when it hits a food element 
+    // this if statement allows the snake to unshift when it hits a food element. 
     if (head.x === food.x && head.y === food.y){
         food = generateFood(); // food has been eaten, new food needed
         clearInterval();// clear past interval
@@ -95,3 +98,8 @@ function move() {
 //     move(); //Move first
 //     draw(); // draw a new position
 // }, 200)
+
+//Start Game function 
+function startGame (){
+    gameStarted = true; // keep track of running game, for pressing enter to start game
+}
