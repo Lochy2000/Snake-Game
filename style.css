@@ -9,12 +9,9 @@ body {
     height: 96vh;
     margin: 0;
     font-family: "VT323", monospace;
-}
-
-body {
-    background-color: #182703;
     background: url(./images/snake-bg2.png) center center / cover;
 }
+
 
 .snake {
     background-image: linear-gradient(to right, rgb(0, 247, 255), rgb(244, 194, 11));
