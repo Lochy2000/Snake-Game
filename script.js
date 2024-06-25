@@ -9,6 +9,7 @@ const highScoreText = document.getElementById('highScore');
 const gridSize = 20
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
+let food2 = generateFood2();
 let highScore = 0;
 let direction = 'right';
 let gameInterval;
@@ -20,6 +21,7 @@ function draw() {
     board.innerHTML = ''; // resets board to empty
     drawSnake();
     drawFood();
+    drawFood2();
     updateScore();
 }
 
@@ -50,9 +52,32 @@ function setPosition(element, position) {
 // Draw Food function 
 function drawFood() {
     if (gameStarted) {
-    const foodElement = createGameElement('div', 'food');
-    setPosition(foodElement, food);
-    board.appendChild(foodElement);
+        let icon = 'apple'
+        if (food.size === 2) {
+          icon = 'banana'
+        }
+        if (food.size === 3) {
+          icon = 'strawberry'
+        }
+        const foodElement = createGameElement('div', icon);
+        setPosition(foodElement, food);
+        board.appendChild(foodElement);
+    }
+}
+
+//second food function 
+function drawFood2() {
+    if (gameStarted) {
+      let icon = 'apple'
+      if (food2.size === 2) {
+        icon = 'banana'
+      }
+      if (food2.size === 3) {
+        icon = 'pear' 
+      }
+      const food2Element = createGameElement('div', icon);
+        setPosition(food2Element, food2);
+        board.appendChild(food2Element);
     }
 }
 
@@ -76,6 +101,11 @@ function generateFood2() {
         size = Math.floor(Math.random() * 3) + 1;
     } while (isPositionOnSnake(x, y));
     return { x, y, size };
+}
+
+// check if a food is on the snake 
+function isPositionOnSnake(x,y) {
+    return snake.some (segement => segement.x === x && segment.y === y);
 }
 
 // Snake Movement using shallow copy, not altering the orginial array. 
@@ -102,18 +132,22 @@ function move() {
 
     // this if statement allows the snake to unshift when it hits a food element. 
     if (head.x === food.x && head.y === food.y) {
-        food = generateFood(); // food has been eaten, new food needed
+        growSnake(food.size);
+        food = generateFood();
         increaseSpeed();
-        clearInterval(gameInterval);// clear past interval
-        gameInterval = setInterval(() => {
-            move();
-            checkCollistion();
-            draw();
-        }, gameSpeedDelay);
+        resetGameInterval();
+    } else if (head.x === food2.x && head.y === food2.y) {
+        growSnake(food2.size);
+        food2 = generateFood2();
+        increaseSpeed();
+        resetGameInterval();
     } else {
-        snake.pop(); // this removes the element that the unshift function creates. 
+        snake.pop(); // removes the added element if the snake doesnt eat any food
     }
+    checkCollision();
+    draw();
 }
+
 
 // test move
 // setInterval(() => {
@@ -121,17 +155,28 @@ function move() {
 //     draw(); // draw a new position
 // }, 200)
 
+// snake grow function
+function growSnake(size) {
+    for (let i = 0; i < size; i++) {
+        snake.push ({...snake[snake.length - 1 ]});
+    }
+}
+
+// Reset the game interval
+function resetGameInterval() {
+    clearInterval(gameInterval);
+    gameInterval = setInterval(move, gameSpeedDelay);
+}
+
 //Start Game function 
 function startGame() {
     gameStarted = true; // keep track of running game, for pressing enter to start game
     intructionText.style.display = 'none';
     logo.style.display = 'none'; // removes loading logo and text when the game starts
-    gameInterval = setInterval(() => {
-        move();
-        checkCollistion();
-        draw();
-    }, gameSpeedDelay);
+    resetGameInterval();
 }
+
+
 
 // space bar event listener 
 //two different gamestarts are to ensure game will work on all browsers.
@@ -176,7 +221,7 @@ function handleKeyPress(event) {
 }
 
 // Check collistion function, will reset the game when the head hits the border of the walls.
-function checkCollistion (){
+function checkCollision (){
     const head = snake [0];
     if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize){
         resetGame();
