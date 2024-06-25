@@ -84,7 +84,7 @@ body {
 }
 
 .food {
-    background-image: url(snake-logo.png);
+    background-color: #273e06;
     border: #999 4px solid;
 }
 
