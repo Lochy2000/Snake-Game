@@ -13,7 +13,7 @@ body {
 
 body {
     background-color: #182703;
-    background: url(./images/snake-bg2.png);
+    background: url(./images/snake-bg2.png) center center / cover;
 }
 
 .snake {
