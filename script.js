@@ -174,6 +174,8 @@ function checkCollistion (){
 
 // reset game function
 function resetGame (){
+    updateHighScore();
+    stopGame();
     snake = [{ x: 10, y: 10 }]; //orignial starting point for snake
     food = generateFood(); 
     direction = 'right'; // original direction reset
@@ -184,4 +186,12 @@ function resetGame (){
 function updateScore(){
     const currentScore = snake.length -1; //snake length starts at 1, need to -1 to make score 0
     score.textContent = currentScore.toString().padStart(3,'0'); // setting score text content, turning into a string of trip digit numbers. Giving the 3 score numbers.
+}
+
+// Stops the game automatically starting when the game resets
+function stopGame() {
+    clearInterval (gameInterval);
+    gameStarted = false;
+    intructionText.style.display = 'block';
+    logo.style.display = 'block';
 }
