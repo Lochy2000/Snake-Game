@@ -164,6 +164,9 @@ function startGame() {
     instructionText.style.display = 'none';
     logo.style.display = 'none'; // removes loading logo and text when the game starts
     resetGameInterval();
+    if (window.innerWidth < 600) {
+        logo.style.display = 'none'; // removes loading logo when the game starts for screens smaller than 600px
+    }
 }
 
 // space bar event listener 
@@ -244,7 +247,9 @@ function stopGame() {
     clearInterval(gameInterval);
     gameStarted = false;
     instructionText.style.display = 'block';
-    logo.style.display = 'block';
+    if (window.innerWidth >= 600) {
+        logo.style.display = 'block';
+    } // this only displays the logo gif on screens larger then 600px
 }
 
 // HighScore updates only when the current score is > than highscore.
