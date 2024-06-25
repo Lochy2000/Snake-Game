@@ -9,7 +9,7 @@ body {
     height: 96vh;
     margin: 0;
     font-family: "VT323", monospace;
-    background-image: url(./images/snake-bg2.png) center center / cover;
+    background-image: url(./images/snake-bg2.png);
 }
 
 
