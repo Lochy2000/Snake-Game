@@ -87,29 +87,18 @@ body {
     background-color: #73aa25;
 }
 
-.food {
-    background-color: #f8f8f8;
-    border: #999 4px solid;
-}
 
-.food2 {
-    background-color: #c23333;
-    border: #f3d933 4px solid;
-}
 
 .apple {
     background-color: red;
-
 }
 
 .banana {
     background-color: yellow;
-
 }
 
 .pear {
     background-color: rgb(74, 114, 14);
-
 }
 
 #logo {

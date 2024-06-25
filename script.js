@@ -57,7 +57,7 @@ function drawFood() {
           icon = 'banana'
         }
         if (food.size === 3) {
-          icon = 'strawberry'
+          icon = 'pear'
         }
         const foodElement = createGameElement('div', icon);
         setPosition(foodElement, food);
@@ -227,8 +227,8 @@ function checkCollision (){
         resetGame();
     }
 
-    for (let i = 1; i < snake.length; i++){
-        if (head.x === snake[i].x && snake.y === snake[i].y){
+    for (let i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y){
             resetGame();
         } // checking if the head is in the same position of the snake body in the using i.
     }
@@ -240,6 +240,7 @@ function resetGame (){
     stopGame();
     snake = [{ x: 10, y: 10 }]; //orignial starting point for snake
     food = generateFood(); 
+    food2 = generateFood2();
     direction = 'right'; // original direction reset
     gameSpeedDelay = 200; // resets speed back
     updateScore(); // adds highscore
