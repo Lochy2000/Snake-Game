@@ -1,8 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 96vh;
     margin: 0;
     font-family: "VT323", monospace;
 }

@@ -87,6 +87,7 @@ function move() {
         clearInterval(gameInterval);// clear past interval
         gameInterval = setInterval(() => {
             move();
+            // checkCollistion();
             draw();
         }, gameSpeedDelay);
     } else {
@@ -139,3 +140,17 @@ function handleKeyPress(event) {
   }
   
   document.addEventListener('keydown', handleKeyPress);
+
+  // increase the speed of the snake at various sizes
+  function increaseSpeed() {
+    console.log(gameSpeedDelay);
+    if (gameSpeedDelay > 150) {
+        gameSpeedDelay -= 5;
+    } else if (gameSpeedDelay > 100) {
+        gameSpeedDelay -= 3;
+    } else if (gameSpeedDelay > 50) {
+        gameSpeedDelay -= 2;
+    } else if (gameSpeedDelay > 25) {
+        gameSpeedDelay -= 1;
+    }
+}
