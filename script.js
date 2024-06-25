@@ -88,7 +88,7 @@ function move() {
         clearInterval(gameInterval);// clear past interval
         gameInterval = setInterval(() => {
             move();
-            // checkCollistion();
+            checkCollistion();
             draw();
         }, gameSpeedDelay);
     } else {
@@ -109,7 +109,7 @@ function startGame() {
     logo.style.display = 'none'; // removes loading logo and text when the game starts
     gameInterval = setInterval(() => {
         move();
-        //checkCollistion();
+        checkCollistion();
         draw();
     }, gameSpeedDelay);
 }
@@ -169,3 +169,13 @@ function checkCollistion (){
         } // checking if the head is in the same position of the snake body in the using i.
     }
 }
+
+// reset game function
+function resetGame (){
+    snake = [{ x: 10, y: 10 }]; //orignial starting point for snake
+    food = generateFood(); 
+    direction = 'right'; // original direction reset
+    gameSpeedDelay = 200; // resets speed back
+    updateScore(); // adds highscore
+}
+
