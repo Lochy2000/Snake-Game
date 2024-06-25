@@ -14,7 +14,7 @@ body {
 
 .snake {
     background-image: linear-gradient(to right, rgb(0, 247, 255), rgb(244, 194, 11));
-    background: url(snake-scale4.jpeg) center center;
+    border: #182703 1px;
 }
 
 #game-board {
@@ -81,10 +81,6 @@ body {
 .game-border-3,
 #logo {
     background-color: #73aa25;
-}
-
-.snake {
-    border: #182703 1px;
 }
 
 .food {

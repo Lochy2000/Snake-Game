@@ -7,28 +7,39 @@ let snake = [{x:10, y:10}];
 // Adds game map, snake and food
 function draw () {
     board.innerHTML = ''; // resets board to empty
-    drawsnake();
+    drawSnake();
 }
 
 // Draw snake 
-function drawsnake (){
-    snake.forEach ((segement) => {
-        const snakeElement = createGameElement ('div', 'snake');
-        setPosition (snakeElement, segement);
-        board.appendChild (snakeElement)
-    })
+function drawSnake() {
+    snake.forEach((segment) => {
+        const snakeElement = createGameElement('div', 'snake');
+        setPosition(snakeElement, segment);
+        board.appendChild(snakeElement);
+    });
 }
 
 //create snake or food
-function createGameElement (tag, className) {
-    const element = document.creatElement (tag);
+function createGameElement(tag, className) {
+    const element = document.createElement(tag);
     element.className = className;
-    return element
+    return element;
 }
-
 // Set the position of snake or food 
 function setPosition(element, position) {
     element.style.gridColumn = position.x;
     element.style.gridRow = position.y;
+}
 
+// Testing draw function 
+// draw()
+
+// Draw Food function 
+
+function drawFood () {
+    if (gameStarted) {
+        const foodElement = createGameElement ('div', 'food')
+        setPosition (foodElement, food);
+        board.appendChild(foodElement);
+    }
 }
