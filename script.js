@@ -58,9 +58,24 @@ function drawFood() {
 
 //Randomly generated food position in x and y using maths random and * gridsize to spawn food anywhere in 20x20 grid
 function generateFood() {
-    const x = Math.floor(Math.random() * gridSize) + 1;
-    const y = Math.floor(Math.random() * gridSize) + 1;
-    return { x, y };
+    let x, y, size;
+    do {
+        x = Math.floor(Math.random() * gridSize) + 1;
+        y = Math.floor(Math.random() * gridSize) + 1;
+        size = Math.floor(Math.random() * 3) + 1;
+    } while (isPositionOnSnake(x, y));
+    return { x, y, size };
+}
+
+// Generate second food
+function generateFood2() {
+    let x, y, size;
+    do {
+        x = Math.floor(Math.random() * gridSize) + 1;
+        y = Math.floor(Math.random() * gridSize) + 1;
+        size = Math.floor(Math.random() * 3) + 1;
+    } while (isPositionOnSnake(x, y));
+    return { x, y, size };
 }
 
 // Snake Movement using shallow copy, not altering the orginial array. 
