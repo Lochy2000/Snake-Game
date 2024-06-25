@@ -18,3 +18,10 @@ function drawsnake (){
         board.appendChild (snakeElement)
     })
 }
+
+//create snake or food
+function createGameElement (tag, className) {
+    const element = document.creatElement (tag);
+    element.className = className;
+    return element
+}
