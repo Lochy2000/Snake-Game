@@ -3,11 +3,13 @@ const board = document.getElementById('game-board');
 const intructionText = document.getElementById('instruction-text')
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
+const highScoreText = document.getElementById('highScore');
 
 // Define game variables
 const gridSize = 20
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
+let highScore = 0;
 let direction = 'right';
 let gameInterval;
 let gameSpeedDelay = 200;
@@ -194,4 +196,13 @@ function stopGame() {
     gameStarted = false;
     intructionText.style.display = 'block';
     logo.style.display = 'block';
+}
+
+function updateHighScore(){
+    const currentScore = snake.length -1;
+    if (currentScore > highScore ){
+        highScore = currentScore
+        highScoreText.textContent = highScore.toString().padStart(3,'0');
+    } 
+    highScoreText.style.display = 'block';
 }
