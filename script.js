@@ -6,6 +6,8 @@ const gridSize = 20
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
 let direction = 'right';
+let gameInterval;
+let gameSpeedDelay = 200;
 
 // Adds game map, snake and food
 function draw() {
@@ -75,7 +77,17 @@ function move() {
 
     snake.unshift (head); // this adds another head element onto the current one
 
-    snake.pop(); // this removes the last element from the array. Which is the unshift.
+    // this if statement allows the snake to unshift when it hits a food element 
+    if (head.x === food.x && head.y === food.y){
+        food = generateFood(); // food has been eaten, new food needed
+        clearInterval();// clear past interval
+        gameInterval = setInterval(() => {
+            move();
+            draw();
+        }, gameSpeedDelay);
+    } else {
+             snake.pop(); // this removes the element that the unshift function creates. 
+    }
 }
 
 // test move
