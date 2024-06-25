@@ -60,36 +60,37 @@ function generateFood() {
 }
 
 // Snake Movement using shallow copy, not altering the orginial array. 
+//Spread operator 0 to get a hold of snakes first postion and copies it.
+// the direction of the snake head
 function move() {
-    const head = { ...snake[0] }; //Spread operator 0 to get a hold of snakes first postion and copies it.
+    const head = { ...snake[0] };
     switch (direction) {
-        case 'up':
-            head.y--; // the direction of the snake head
-            break;
-        case 'down':
-            head.y++; 
-            break;
-        case 'left':
-            head.x--; 
-            break;
-        case 'right':
-            head.x++; 
-            break;
-
+      case 'up':
+        head.y--;
+        break;
+      case 'down':
+        head.y++;
+        break;
+      case 'left':
+        head.x--;
+        break;
+      case 'right':
+        head.x++;
+        break;
     }
 
-    snake.unshift (head); // this adds another head element onto the current one
+    snake.unshift(head); // this adds another head element onto the current one
 
     // this if statement allows the snake to unshift when it hits a food element. 
-    if (head.x === food.x && head.y === food.y){
+    if (head.x === food.x && head.y === food.y) {
         food = generateFood(); // food has been eaten, new food needed
-        clearInterval();// clear past interval
+        clearInterval(gameInterval);// clear past interval
         gameInterval = setInterval(() => {
             move();
             draw();
         }, gameSpeedDelay);
     } else {
-             snake.pop(); // this removes the element that the unshift function creates. 
+        snake.pop(); // this removes the element that the unshift function creates. 
     }
 }
 
@@ -100,13 +101,41 @@ function move() {
 // }, 200)
 
 //Start Game function 
-function startGame (){
+function startGame() {
     gameStarted = true; // keep track of running game, for pressing enter to start game
-    intructionText.style.display = 'none'; 
+    intructionText.style.display = 'none';
     logo.style.display = 'none'; // removes loading logo and text when the game starts
     gameInterval = setInterval(() => {
         move();
         //checkCollistion();
         draw();
-    }, gameSpeedDelay)
+    }, gameSpeedDelay);
 }
+
+// space bar event listener 
+//two different gamestarts are to ensure game will work on all browsers.
+function handleKeyPress(event) {
+    if (
+      (!gameStarted && event.code === 'Space') ||
+      (!gameStarted && event.key === ' ')
+    ) {
+      startGame();
+    } else {
+      switch (event.key) {
+        case 'ArrowUp':
+          direction = 'up';
+          break;
+        case 'ArrowDown':
+          direction = 'down';
+          break;
+        case 'ArrowLeft':
+          direction = 'left';
+          break;
+        case 'ArrowRight':
+          direction = 'right';
+          break;
+      }
+    }
+  }
+  
+  document.addEventListener('keydown', handleKeyPress);
