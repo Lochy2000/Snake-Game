@@ -49,11 +49,11 @@ function setPosition(element, position) {
 
 // Draw Food function 
 function drawFood() {
-
+    if (gameStarted) {
     const foodElement = createGameElement('div', 'food');
     setPosition(foodElement, food);
     board.appendChild(foodElement);
-
+    }
 }
 
 //Randomly generated food position in x and y using maths random and * gridsize to spawn food anywhere in 20x20 grid
@@ -185,6 +185,7 @@ function resetGame (){
     updateScore(); // adds highscore
 }
 
+// Changes the current score as the snake eats the food
 function updateScore(){
     const currentScore = snake.length -1; //snake length starts at 1, need to -1 to make score 0
     score.textContent = currentScore.toString().padStart(3,'0'); // setting score text content, turning into a string of trip digit numbers. Giving the 3 score numbers.
@@ -198,6 +199,7 @@ function stopGame() {
     logo.style.display = 'block';
 }
 
+//HighScore updates only when the current score is > than highscore.
 function updateHighScore(){
     const currentScore = snake.length -1;
     if (currentScore > highScore ){
