@@ -18,7 +18,8 @@ body {
 
 .snake {
     background-image: linear-gradient(to right, rgb(0, 247, 255), rgb(244, 194, 11));
-    border: #182703 1px;
+    border: #182703 1px; 
+
 }
 
 #game-board {
@@ -91,14 +92,16 @@ body {
 
 .apple {
     background-color: red;
+    border-radius: 50%;
 }
 
 .banana {
     background-color: yellow;
-}
+    transform: skew(20deg);
+} 
 
 .pear {
-    background-color: rgb(74, 114, 14);
+    background-color: rgb(154, 255, 3);
 }
 
 #logo {

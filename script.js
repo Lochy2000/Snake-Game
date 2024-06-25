@@ -1,12 +1,12 @@
 // define HTML elements
 const board = document.getElementById('game-board');
-const intructionText = document.getElementById('instruction-text')
+const instructionText = document.getElementById('instruction-text');
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
 
 // Define game variables
-const gridSize = 20
+const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
 let food = generateFood();
 let food2 = generateFood2();
@@ -40,24 +40,22 @@ function createGameElement(tag, className) {
     element.className = className;
     return element;
 }
+
 // Set the position of snake or food 
 function setPosition(element, position) {
     element.style.gridColumn = position.x;
     element.style.gridRow = position.y;
 }
 
-// Testing draw function 
-// draw();
-
 // Draw Food function 
 function drawFood() {
     if (gameStarted) {
-        let icon = 'apple'
+        let icon = 'apple';
         if (food.size === 2) {
-          icon = 'banana'
+          icon = 'banana';
         }
         if (food.size === 3) {
-          icon = 'pear'
+          icon = 'pear';
         }
         const foodElement = createGameElement('div', icon);
         setPosition(foodElement, food);
@@ -65,23 +63,23 @@ function drawFood() {
     }
 }
 
-//second food function 
+// Draw second food function 
 function drawFood2() {
     if (gameStarted) {
-      let icon = 'apple'
-      if (food2.size === 2) {
-        icon = 'banana'
-      }
-      if (food2.size === 3) {
-        icon = 'pear' 
-      }
-      const food2Element = createGameElement('div', icon);
+        let icon = 'apple';
+        if (food2.size === 2) {
+          icon = 'banana';
+        }
+        if (food2.size === 3) {
+          icon = 'pear';
+        }
+        const food2Element = createGameElement('div', icon);
         setPosition(food2Element, food2);
         board.appendChild(food2Element);
     }
 }
 
-//Randomly generated food position in x and y using maths random and * gridsize to spawn food anywhere in 20x20 grid
+// Randomly generate food position in x and y using Math.random and gridSize to spawn food anywhere in the 20x20 grid
 function generateFood() {
     let x, y, size;
     do {
@@ -103,13 +101,13 @@ function generateFood2() {
     return { x, y, size };
 }
 
-// check if a food is on the snake 
-function isPositionOnSnake(x,y) {
-    return snake.some (segement => segement.x === x && segment.y === y);
+// Check if a food is on the snake 
+function isPositionOnSnake(x, y) {
+    return snake.some(segment => segment.x === x && segment.y === y);
 }
 
-// Snake Movement using shallow copy, not altering the orginial array. 
-//Spread operator 0 to get a hold of snakes first postion and copies it.
+// Snake Movement using shallow copy, not altering the original array.
+// Spread operator to get a hold of snake's first position and copy it.
 // the direction of the snake head
 function move() {
     const head = { ...snake[0] };
@@ -142,23 +140,15 @@ function move() {
         increaseSpeed();
         resetGameInterval();
     } else {
-        snake.pop(); // removes the added element if the snake doesnt eat any food
+        snake.pop(); // removes the added element if the snake doesn't eat any food
     }
     checkCollision();
     draw();
 }
 
-
-// test move
-// setInterval(() => {
-//     move(); //Move first
-//     draw(); // draw a new position
-// }, 200)
-
-// snake grow function
 function growSnake(size) {
     for (let i = 0; i < size; i++) {
-        snake.push ({...snake[snake.length - 1 ]});
+        snake.push({ ...snake[snake.length - 1] });
     }
 }
 
@@ -168,18 +158,16 @@ function resetGameInterval() {
     gameInterval = setInterval(move, gameSpeedDelay);
 }
 
-//Start Game function 
+// Start Game function 
 function startGame() {
     gameStarted = true; // keep track of running game, for pressing enter to start game
-    intructionText.style.display = 'none';
+    instructionText.style.display = 'none';
     logo.style.display = 'none'; // removes loading logo and text when the game starts
     resetGameInterval();
 }
 
-
-
 // space bar event listener 
-//two different gamestarts are to ensure game will work on all browsers.
+// two different gamestarts are to ensure game will work on all browsers.
 function handleKeyPress(event) {
     if (
       (!gameStarted && event.code === 'Space') ||
@@ -202,13 +190,12 @@ function handleKeyPress(event) {
           break;
       }
     }
-  }
-  
-  document.addEventListener('keydown', handleKeyPress);
+}
 
-  // increase the speed of the snake at various sizes
-  function increaseSpeed() {
-    console.log(gameSpeedDelay);
+document.addEventListener('keydown', handleKeyPress);
+
+// Increase the speed of the snake at various sizes
+function increaseSpeed() {
     if (gameSpeedDelay > 150) {
         gameSpeedDelay -= 5;
     } else if (gameSpeedDelay > 100) {
@@ -220,26 +207,26 @@ function handleKeyPress(event) {
     }
 }
 
-// Check collistion function, will reset the game when the head hits the border of the walls.
-function checkCollision (){
-    const head = snake [0];
-    if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize){
+// Check collision function, will reset the game when the head hits the border of the walls.
+function checkCollision() {
+    const head = snake[0];
+    if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize) {
         resetGame();
     }
 
     for (let i = 1; i < snake.length; i++) {
-        if (head.x === snake[i].x && head.y === snake[i].y){
+        if (head.x === snake[i].x && head.y === snake[i].y) {
             resetGame();
-        } // checking if the head is in the same position of the snake body in the using i.
+        }
     }
 }
 
-// reset game function
-function resetGame (){
+// Reset game function
+function resetGame() {
     updateHighScore();
     stopGame();
-    snake = [{ x: 10, y: 10 }]; //orignial starting point for snake
-    food = generateFood(); 
+    snake = [{ x: 10, y: 10 }]; // original starting point for snake
+    food = generateFood();
     food2 = generateFood2();
     direction = 'right'; // original direction reset
     gameSpeedDelay = 200; // resets speed back
@@ -247,25 +234,25 @@ function resetGame (){
 }
 
 // Changes the current score as the snake eats the food
-function updateScore(){
-    const currentScore = snake.length -1; //snake length starts at 1, need to -1 to make score 0
-    score.textContent = currentScore.toString().padStart(3,'0'); // setting score text content, turning into a string of trip digit numbers. Giving the 3 score numbers.
+function updateScore() {
+    const currentScore = snake.length - 1; // snake length starts at 1, need to -1 to make score 0
+    score.textContent = currentScore.toString().padStart(3, '0'); // setting score text content, turning into a string of triple-digit numbers.
 }
 
 // Stops the game automatically starting when the game resets
 function stopGame() {
-    clearInterval (gameInterval);
+    clearInterval(gameInterval);
     gameStarted = false;
-    intructionText.style.display = 'block';
+    instructionText.style.display = 'block';
     logo.style.display = 'block';
 }
 
-//HighScore updates only when the current score is > than highscore.
-function updateHighScore(){
-    const currentScore = snake.length -1;
-    if (currentScore > highScore ){
-        highScore = currentScore
-        highScoreText.textContent = highScore.toString().padStart(3,'0');
-    } 
+// HighScore updates only when the current score is > than highscore.
+function updateHighScore() {
+    const currentScore = snake.length - 1;
+    if (currentScore > highScore) {
+        highScore = currentScore;
+        highScoreText.textContent = highScore.toString().padStart(3, '0');
+    }
     highScoreText.style.display = 'block';
 }
