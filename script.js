@@ -25,3 +25,10 @@ function createGameElement (tag, className) {
     element.className = className;
     return element
 }
+
+// Set the position of snake or food 
+function setPosition(element, position) {
+    element.style.gridColumn = position.x;
+    element.style.gridRow = position.y;
+
+}
