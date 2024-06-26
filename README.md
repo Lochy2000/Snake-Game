@@ -66,7 +66,10 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 
 #### Phone 
 
-Currently the phone version can start with a start button. However, the game functions currently don't work on the phone version. In
+Currently the phone version can start with a start button. Although a swipe function was attempted to be add it didn't function on the phone as meant. The game will still work on a phone it just needs a keyboard attached to it.
+
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/edaf19ec-24e7-4faf-80de-21a28427e444)
+
 
 ## Testing 
 
