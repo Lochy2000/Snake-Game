@@ -99,7 +99,7 @@ body {
     height: 22px;
     width: 21px;
     border-radius: 50%;
-    box-shadow: 0 0 10px #c73e11;
+    box-shadow: 0 0 10px 4px #c73e11;
 }
 
 .banana {
@@ -113,7 +113,7 @@ body {
 .pear {
     background: url(images/melon.png) center;
     border-radius: 50%;
-    box-shadow: 1px 0 5px 2px greenyellow;
+    box-shadow: 0px 0 10px 3px greenyellow;
     width: 22px;
     height: 22px;
 }
