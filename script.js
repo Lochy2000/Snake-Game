@@ -158,6 +158,7 @@ function startGame() {
 function handleKeyPress(event) {
     if (
       (!gameStarted && event.code === 'Space') ||
+      (!gameStarted && event.code === 'Touch') ||
       (!gameStarted && event.key === ' ')
     ) {
       startGame();
