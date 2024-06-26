@@ -9,6 +9,7 @@ body {
     height: 96vh;
     margin: 0;
     font-family: "VT323", monospace;
+    background-color: #273e06;
     background-image: url(/assets/images/snake-bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -125,6 +126,9 @@ body {
         grid-template-columns: repeat(20, 10px);
         grid-template-rows: repeat(20, 10px);
         margin: 5px;
+    }
+    body{
+        height: 100vh;
     }
     #logo {
         display: none;
