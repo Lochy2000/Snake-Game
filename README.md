@@ -26,27 +26,26 @@ Loading image was created to give a retro pixel style feel for the game. The tex
 
  #### Current score 
 
- The score is updated by taking the snakes current length and turing it into a string using the .tostring() function. Which is then displayed using .padStart (3,'0') giving a three digit score possiblity.
+ The score is updated by taking the snakes current length and turning it into a string using the .tostring() function. Which is then displayed using .padStart (3,'0') giving a three digit score possiblity.
  
  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/89af6805-34b7-4518-a49d-31c61af42927)
 
  #### High score
-
- High Score shows when players snake collides with something. Using the same functions as the score, the high score will only update if the current score is greater than the high score.
+Using the same functions as the score, the high score will only update if the current score is greater than the high score.
 
  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/f768baea-0d91-4dc5-902d-171d5f6866d0)
 
 ## Game play
 
 #### Movement 
-Event listeners used to listen for arrow keys. Arrows can be used to give directions to snake. Up, down, left and right.
+Event listener used to listen for arrow keys. Arrows can be used to give directions to snake. Up, down, left and right.
 Game speed was also designed to increase at 25 points, 50 points, 100 points and 150points. This adds difficulty levels to the game, making it progressively harder as you play. 
 
 #### Food and Points
 
 Two foods will always be displayed on the screen.
 The food uses three different fruits, which match a higher score bonus. Apple is - two points, Orange - three points, Watermellon – 4 points. 
-Point system. Each point = 1 block. So, if a player got 4 points from the food the snake would increase in size by 4 blocks. This means the ultimate highest game score would be 400 points as you would run out of space on the game board. 
+Point system. Each point = +1 block in length. So, if a player got 4 points from the food the snake would increase in size by 4 blocks. This means the ultimate highest game score would be 400 points as you would run out of space on the game board. 
 The food is generated on a random position on the grid using Math.random() and Math.floor(). 
 
 #### Growing 
@@ -63,7 +62,7 @@ Using If statement the consol check the snakes’ coordinates with the grid size
 
 #### Game Restart and stop
 
-When the snakes collide's with an obsliticle a restart function resets all the game functions back to the orginal game board. This resets the food position, the snakes current length and adds the game logo and text back to block from none.
+When the snakes collide's with an obsliticle a restart function resets all the game functions back to the orginal game board state. This resets the food position, the snakes current length and adds the game logo and text back to block from none.
 
 ## Testing 
 
@@ -83,7 +82,7 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 
 ####  <li>JavaScript</li>
  <ul>
-  <li> The javascript checker came up with 47 warnings. Majority of which said I should use ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). However, all the functions worked as required and didn't see any reason in updating the used operators.</li>
+  <li> The javascript checker came up with 47 warnings. Majority of which said I should use ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). However, all the functions worked as required and didn't see any reason in changing.</li>
  </ul>    
  
 ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/243a1af1-6cfe-4d75-9221-b700dfa98893)
@@ -103,13 +102,15 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 
   
 #### <li>Game testing </li>
+played the game a bunch and had others try to play it.
 <ul>
  <li>Made sure every time enter was pressed game would start, removing logo and text from game board.</li>
  <li>Made sure that both foods loaded randomly and each time.</li>
  <li>Made sure that the three different foods added the correct points to the snake.</li>
- <li>Made sure that the high score would update each time it high score was gotten.</li>
+ <li>Made sure that the high score would update each time a high score was gotten.</li>
  <li>Made sure the snake would collide with all 4 sides of the box. Triggering gamestop and restart functions</li>
  <li>Made sure the snake would collide with itself, triggering gamestop and restart.</li>
+ <li>Made sure snakes length and speed updated accordingly </li>
  <li>Tested game on Chrome,Microsoft edge and firefly. All functions work.</li>
 </ul>
 
@@ -123,6 +124,8 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 •	Added snake coordinates to generateFood function. This meant the food would never spawn on the snakes body no matter how long.
 #### Loading logo on screen under 600 px was too big. Java script functions would override style.css media query. Solution:
 •	Added window.innerwidth >=600  to stopGame function and window.innerwidth< 600 to startGame function.
+#### Phone version 
+• Various methods were tried and tested, however, i was unable to get the javascript eventlistener working on the mobile version.
 
 ## Deployment
 
