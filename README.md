@@ -92,10 +92,27 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 #### Version control 
 The game was made using Visual studio code. It was pushed to Github using a remote repository called ‘Snake-Game’
 Git hub commands were used through-out to push the game to the remote repository. The commands used were as follows: 
-Git add . – adds files to staging area
-Git commit -m “  ” – commits changes to local repository to await to be pushed to Github
-Git push – this pushes all code to remote repository stored on Github 
+<ul>
+<li>Git add . – adds files to staging area</li>
+<li>Git commit -m “  ” – commits changes to local repository to await to be pushed to Github</li>
+<li>Git push – this pushes all code to remote repository stored on Github</li> 
+</ul>
 
+#### Deployement to GitHub Page
+Site was deployed to github pages. To make sure game would function properly. This is done as follows: 
+<ul>
+<li>In the ‘Snake-Game’ repository navigate to setting</li>
+<li>In pages on settings used the drop-down menu, to select master branch and save.</li>
+<li>Once saved a live link is provided which the game can be played on.</li>
+</ul>
+
+#### Cloning of repository locally 
+<ul>
+<li>Find the desired repository.</li>
+<li>Locate code button above all project files</li>
+<li>Click on HTTPS and copy repository link.</li>
+<li>I used Visual studios, and pasted the url into the IDE’s terminal</li>
+</ul>
 
 ## Credits
 
