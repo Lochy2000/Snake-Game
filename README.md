@@ -21,7 +21,7 @@ Loading image was created to give a retro pixel style feel for the game. The tex
 
  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/9b112ca2-6a83-47b1-8c82-d3b9e56204c6)  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4d27906e-3bf8-4c73-a719-a375931d6c79) 
 
- ### Score 
+ ## Score 
 
  #### Current score 
 
@@ -35,9 +35,9 @@ Loading image was created to give a retro pixel style feel for the game. The tex
 
  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/f768baea-0d91-4dc5-902d-171d5f6866d0)
 
- ### Game play
+## Game play
 
- #### Movement 
+#### Movement 
 Event listeners used to listen for arrow keys. Arrows can be used to give directions to snake. Up, down, left and right.
 Game speed was also designed to increase at 25 points, 50 points, 100 points and 150points. This adds difficulty levels to the game, making it progressively harder as you play. 
 
@@ -64,6 +64,40 @@ Using If statement the consol check the snakes’ coordinates with the grid size
 
 When the snakes collide's with an obsliticle a restart function resets all the game functions back to the orginal game board. This resets the food position, the snakes current length and adds the game logo and text back to block from none.
 
+## Testing 
+
+#### Lighthouse
+
+#### HTML 
+
+#### CSS 
+
+#### JavaScript
+
+#### Screen sizing
+
+#### Feature and testing
+
+## Bugs
+
+#### Collision bug which caused the snake to go through food and not de spawning it. Fixing Collision Detection Bug:
+•	There was a typo in the checkCollision function where snake.y should be snake[i].y.
+#### Food spawning on snake. Solution:
+•	Added snake coordinates to generateFood function. This meant the food would never spawn on the snakes body no matter how long.
+#### Loading logo on screen under 600 px was too big. Java script functions would override style.css media query. Solution:
+•	Added window.innerwidth >=600  to stopGame function and window.innerwidth< 600 to startGame function.
+
+## Deployment
+
+#### Version control 
+The game was made using Visual studio code. It was pushed to Github using a remote repository called ‘Snake-Game’
+Git hub commands were used through-out to push the game to the remote repository. The commands used were as follows: 
+Git add . – adds files to staging area
+Git commit -m “  ” – commits changes to local repository to await to be pushed to Github
+Git push – this pushes all code to remote repository stored on Github 
+
+
+## Credits
 
 
 
