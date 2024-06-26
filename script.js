@@ -237,44 +237,41 @@ function updateHighScore() {
     }
     highScoreText.style.display = 'block';
 }
-// Event listener for touch controls for phone
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchmove', handleTouchMove, false);
 
-let xDown = null;
-let yDown = null;
+// Touch controls for mobile
+function handleTouchStart(event) {
+    const touch = event.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+}
 
-function getTouches(evt) {
-    return evt.touches || evt.originalEvent.touches;
+function handleTouchMove(event) {
+    if (!gameStarted) return;
+    const touch = event.touches[0];
+    touchEndX = touch.clientX;
+    touchEndY = touch.clientY;
 }
-function handleTouchStart(evt) {
-    const firstTouch = getTouches(evt)[0];
-    xDown = firstTouch.clientX;
-    yDown = firstTouch.clientY;
-}
-function handleTouchMove(evt) {
-    if (!xDown || !yDown) {
-        return;
-    }
-    const xUp = evt.touches[0].clientX;
-    const yUp = evt.touches[0].clientY;
-    const xDiff = xDown - xUp;
-    const yDiff = yDown - yUp;
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-        // Most significant
-        if (xDiff > 0) {
-            direction = 'left';
-        } else {
+
+function handleTouchEnd() {
+    if (!gameStarted) return;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
             direction = 'right';
+        } else {
+            direction = 'left';
         }
     } else {
-        if (yDiff > 0) {
-            direction = 'up';
-        } else {
+        if (deltaY > 0) {
             direction = 'down';
+        } else {
+            direction = 'up';
         }
     }
-    // Reset values
-    xDown = null;
-    yDown = null;
 }
+
+document.addEventListener('touchstart', handleTouchStart);
+document.addEventListener('touchmove', handleTouchMove);
+document.addEventListener('touchend', handleTouchEnd);
