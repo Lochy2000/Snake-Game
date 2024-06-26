@@ -3,7 +3,7 @@ live game-- https://lochy2000.github.io/Snake-Game/
 
 Played the Snake Game a lot when I was growing up. Made this game because it brings back a lot of good memories, but also it used a lot of the concepts that I learnt in javascript model, such as maniplating the DOM. 
 Overall, the game works well and I found testing the game enjoyable. 
-Currently the game play only works on a Comptuer. The Game is resposive to fit on different screens.
+Currently the game play only works on a Comptuer. The Game is resposive to fit on different screens and has a start button for phones.
 ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/7b953e15-cee1-4755-8e2d-2b036d25f139)
 
 
@@ -64,11 +64,18 @@ Using If statement the consol check the snakes’ coordinates with the grid size
 
 When the snakes collide's with an obsliticle a restart function resets all the game functions back to the orginal game board state. This resets the food position, the snakes current length and adds the game logo and text back to block from none.
 
+#### Phone 
+
+Currently the phone version can start with a start button. However, the game functions currently don't work on the phone version. In
+
 ## Testing 
 
 <ul>
  
 #### <li>Accesiblity</li>
+
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/f0d81c0b-6827-4be2-920f-433b85d33f87)
+
 
 #### <li> HTML </li>
 ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/d75f7a39-abf3-400b-8a75-2ff764406d7f)
