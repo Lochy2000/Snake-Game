@@ -22,6 +22,7 @@ function draw() {
     drawFood2();
     updateScore();
 }
+
 // Draw snake 
 function drawSnake() {
     snake.forEach((segment) => {

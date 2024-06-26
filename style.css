@@ -9,12 +9,16 @@ body {
     height: 96vh;
     margin: 0;
     font-family: "VT323", monospace;
-    background-image: url(./images/snake-bg2.png);
+    background-image: url(./images/snake-bg2.jpg);
 }
 .snake {
     background-image: linear-gradient(to right, rgb(0, 247, 255), rgb(244, 194, 11));
     border: #182703 1px; 
-
+}
+.head {
+    background-image: linear-gradient(to right, rgb(0, 247, 255), rgb(244, 194, 11));
+    border: #182703 1px;
+    border-radius: 50%;
 }
 #game-board {
     border-radius: 100px;
@@ -140,4 +144,25 @@ body {
         margin: 0;
     }
 
+    .apple {
+        background: url(images/apple.png) center ;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 4px #c73e11;
+    }
+    .banana {
+        background: url(images/orange.png) center ;
+        box-shadow: 0px 0px 10px 3px rgb(250, 183, 57);
+        border-radius: 50%;
+        width: 10px;
+        height: 20px;
+    } 
+    .pear {
+        background: url(images/melon.png) center;
+        border-radius: 50%;
+        box-shadow: 0px 0 10px 3px greenyellow;
+        width: 10px;
+        height: 10px;
+    }
 }
