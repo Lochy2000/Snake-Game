@@ -66,17 +66,53 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 
 ## Testing 
 
-#### Lighthouse
+<ul>
+ 
+#### <li>Accesiblity</li>
 
-#### HTML 
+#### <li> HTML </li>
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/d75f7a39-abf3-400b-8a75-2ff764406d7f)
 
-#### CSS 
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/1df7e417-6bbb-41b2-9ecd-1f0caee9f865)
 
-#### JavaScript
+#### <li> CSS </li>
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/bb487ec7-950e-4652-8619-3a62a14f3da5)
 
-#### Screen sizing
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4805f9a7-8c18-49d2-849e-7f04c9cbc6e8)
 
-#### Feature and testing
+####  <li>JavaScript</li>
+ <ul>
+  <li> The javascript checker came up with 47 warnings. Majority of which said I should use ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). However, all the functions worked as required and didn't see any reason in updating the used operators.</li>
+ </ul>    
+ 
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/243a1af1-6cfe-4d75-9221-b700dfa98893)
+
+
+####  <li>Search engines</li>
+ <ul>
+  <li> Game runs and functions perfectly across multipe search engines</li>
+ </ul>
+
+ ####  <li>Media Query</li>
+ <ul>
+  <li>The game board is designed to fit on all screen sizes. Although the game currently requires a keyboard to function.</li>
+ </ul>
+ 
+ ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4021752a-e0fe-4f5a-ac79-e1a5281d1b6e)
+
+  
+#### <li>Game testing </li>
+<ul>
+ <li>Made sure every time enter was pressed game would start, removing logo and text from game board.</li>
+ <li>Made sure that both foods loaded randomly and each time.</li>
+ <li>Made sure that the three different foods added the correct points to the snake.</li>
+ <li>Made sure that the high score would update each time it high score was gotten.</li>
+ <li>Made sure the snake would collide with all 4 sides of the box. Triggering gamestop and restart functions</li>
+ <li>Made sure the snake would collide with itself, triggering gamestop and restart.</li>
+ <li>Tested game on Chrome,Microsoft edge and firefly. All functions work.</li>
+</ul>
+
+</ul>
 
 ## Bugs
 
@@ -115,8 +151,15 @@ Site was deployed to github pages. To make sure game would function properly. Th
 </ul>
 
 ## Credits
+Thankyou to spence my mentor for the support, helping with various troubleshooting problems and explaining some of the JavaScript concepts. Also, thank you to my friend Max who tested this game by playing for any issues.
 
-
+#### Media
+<ul>
+<li>The main inspiration for this game came from Freedcodecamp tutorial walk through. Most of the code used in the HTML,CSS and Javascript were takin from this tutorial.
+[https://www.youtube.com/watch?v=uyhzCBEGaBY ](https://www.youtube.com/watch?v=uyhzCBEGaBY) </li>
+<li>Also, code institute lessons in If/Else statement, switch statements and for loops, were useful for understand the concepts.</li>
+<li>Additionally, W3Shools and Developer-Mozilla were also useful for explaining various functions.</li>
+</ul>
 
 
 
