@@ -123,6 +123,8 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 •	Added snake coordinates to generateFood function. This meant the food would never spawn on the snakes body no matter how long.
 #### Loading logo on screen under 600 px was too big. Java script functions would override style.css media query. Solution:
 •	Added window.innerwidth >=600  to stopGame function and window.innerwidth< 600 to startGame function.
+#### Phone version 
+• Various methods were tried and tested, however, i was unable to get the javascript eventlistener working on the mobile version.
 
 ## Deployment
 
