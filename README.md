@@ -1,4 +1,5 @@
 # SnakeGame
+live game-- https://lochy2000.github.io/Snake-Game/ 
 
 Played the Snake Game a lot when I was growing up. Made this game because it brings back a lot of good memories, but also it used a lot of the concepts that I learnt in javascript model, such as maniplating the DOM. 
 Overall, the game works well and I found testing the game enjoyable. 
@@ -141,6 +142,7 @@ Site was deployed to github pages. To make sure game would function properly. Th
 <li>In pages on settings used the drop-down menu, to select master branch and save.</li>
 <li>Once saved a live link is provided which the game can be played on.</li>
 </ul>
+Live version --  https://lochy2000.github.io/Snake-Game/ 
 
 #### Cloning of repository locally 
 <ul>
@@ -162,9 +164,13 @@ Thankyou to spence my mentor for the support, helping with various troubleshooti
 </ul>
 
 #### Media 
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/5fca9b7d-45ec-45cb-9ecb-9b0f1125ac39)
 <ul>
  <li> All image came of Canva. The background image was AI generated. The food images were stock photos. And the Snake was designed on Canva builder.</li>
 </ul>
+
+
+
 
 
 
