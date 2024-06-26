@@ -4,7 +4,6 @@ const instructionText = document.getElementById('instruction-text');
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
-
 // Define game variables
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
@@ -15,7 +14,6 @@ let direction = 'right';
 let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
-
 // Adds game map, snake and food
 function draw() {
     board.innerHTML = ''; // resets board to empty
@@ -24,7 +22,6 @@ function draw() {
     drawFood2();
     updateScore();
 }
-
 // Draw snake 
 function drawSnake() {
     snake.forEach((segment) => {
@@ -33,20 +30,17 @@ function drawSnake() {
         board.appendChild(snakeElement);
     });
 }
-
 //create snake or food
 function createGameElement(tag, className) {
     const element = document.createElement(tag);
     element.className = className;
     return element;
 }
-
 // Set the position of snake or food 
 function setPosition(element, position) {
     element.style.gridColumn = position.x;
     element.style.gridRow = position.y;
 }
-
 // Draw Food function 
 function drawFood() {
     if (gameStarted) {
@@ -62,7 +56,6 @@ function drawFood() {
         board.appendChild(foodElement);
     }
 }
-
 // Draw second food function 
 function drawFood2() {
     if (gameStarted) {
@@ -78,7 +71,6 @@ function drawFood2() {
         board.appendChild(food2Element);
     }
 }
-
 // Randomly generate food position in x and y using Math.random and gridSize to spawn food anywhere in the 20x20 grid
 function generateFood() {
     let x, y, size;
@@ -89,7 +81,6 @@ function generateFood() {
     } while (isPositionOnSnake(x, y));
     return { x, y, size };
 }
-
 // Generate second food
 function generateFood2() {
     let x, y, size;
@@ -100,12 +91,10 @@ function generateFood2() {
     } while (isPositionOnSnake(x, y));
     return { x, y, size };
 }
-
 // Check if a food is on the snake 
 function isPositionOnSnake(x, y) {
     return snake.some(segment => segment.x === x && segment.y === y);
 }
-
 // Snake Movement using shallow copy, not altering the original array.
 // Spread operator to get a hold of snake's first position and copy it.
 // the direction of the snake head
@@ -125,9 +114,7 @@ function move() {
         head.x++;
         break;
     }
-
     snake.unshift(head); // this adds another head element onto the current one
-
     // this if statement allows the snake to unshift when it hits a food element. 
     if (head.x === food.x && head.y === food.y) {
         growSnake(food.size);
@@ -145,19 +132,16 @@ function move() {
     checkCollision();
     draw();
 }
-
 function growSnake(size) {
     for (let i = 0; i < size; i++) {
         snake.push({ ...snake[snake.length - 1] });
     }
 }
-
 // Reset the game interval
 function resetGameInterval() {
     clearInterval(gameInterval);
     gameInterval = setInterval(move, gameSpeedDelay);
 }
-
 // Start Game function 
 function startGame() {
     gameStarted = true; // keep track of running game, for pressing enter to start game
@@ -168,7 +152,6 @@ function startGame() {
         logo.style.display = 'none'; // removes loading logo when the game starts for screens smaller than 600px
     }
 }
-
 // space bar event listener 
 // two different gamestarts are to ensure game will work on all browsers.
 function handleKeyPress(event) {
@@ -194,9 +177,7 @@ function handleKeyPress(event) {
       }
     }
 }
-
 document.addEventListener('keydown', handleKeyPress);
-
 // Increase the speed of the snake at various sizes
 function increaseSpeed() {
     if (gameSpeedDelay > 150) {
@@ -209,21 +190,18 @@ function increaseSpeed() {
         gameSpeedDelay -= 1;
     }
 }
-
 // Check collision function, will reset the game when the head hits the border of the walls.
 function checkCollision() {
     const head = snake[0];
     if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize) {
         resetGame();
     }
-
     for (let i = 1; i < snake.length; i++) {
         if (head.x === snake[i].x && head.y === snake[i].y) {
             resetGame();
         }
     }
 }
-
 // Reset game function
 function resetGame() {
     updateHighScore();
@@ -235,13 +213,11 @@ function resetGame() {
     gameSpeedDelay = 200; // resets speed back
     updateScore(); // adds highscore
 }
-
 // Changes the current score as the snake eats the food
 function updateScore() {
     const currentScore = snake.length - 1; // snake length starts at 1, need to -1 to make score 0
     score.textContent = currentScore.toString().padStart(3, '0'); // setting score text content, turning into a string of triple-digit numbers.
 }
-
 // Stops the game automatically starting when the game resets
 function stopGame() {
     clearInterval(gameInterval);
@@ -251,7 +227,6 @@ function stopGame() {
         logo.style.display = 'block';
     } // this only displays the logo gif on screens larger then 600px
 }
-
 // HighScore updates only when the current score is > than highscore.
 function updateHighScore() {
     const currentScore = snake.length - 1;
@@ -261,7 +236,6 @@ function updateHighScore() {
     }
     highScoreText.style.display = 'block';
 }
-
 // Event listener for touch controls for phone
 document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
@@ -272,24 +246,19 @@ let yDown = null;
 function getTouches(evt) {
     return evt.touches || evt.originalEvent.touches;
 }
-
 function handleTouchStart(evt) {
     const firstTouch = getTouches(evt)[0];
     xDown = firstTouch.clientX;
     yDown = firstTouch.clientY;
 }
-
 function handleTouchMove(evt) {
     if (!xDown || !yDown) {
         return;
     }
-
     const xUp = evt.touches[0].clientX;
     const yUp = evt.touches[0].clientY;
-
     const xDiff = xDown - xUp;
     const yDiff = yDown - yUp;
-
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
         // Most significant
         if (xDiff > 0) {
