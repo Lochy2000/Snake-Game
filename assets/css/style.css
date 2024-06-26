@@ -166,9 +166,9 @@ body {
     }
 
     .apple {
-        background: url(images/apple.png) center ;
-        height: 10px;
-        width: 10px;
+        background-color: #fc0202;
+        height: 5px;
+        width: 5px;
         border-radius: 50%;
         box-shadow: 0 0 10px 4px #c73e11;
     }
@@ -176,14 +176,14 @@ body {
         background-color: #c1bf50;
         box-shadow: 0px 0px 10px 3px rgb(250, 183, 57);
         border-radius: 50%;
-        width: 10px;
-        height: 10px;
+        width: 5px;
+        height: 5px;
     } 
     .pear {
-        background-color: #c16d50;
+        background-color: #3c9104;
         border-radius: 50%;
         box-shadow: 0px 0 10px 3px greenyellow;
-        width: 10px;
-        height: 10px;
+        width: 5px;
+        height: 5px;
     }
 }
