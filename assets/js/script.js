@@ -295,7 +295,9 @@ function updateHighScore() {
     highScoreText.style.display = 'block';
 }
 
-// Show start button on mobile devices
+/**
+ * Show start button on mobile devices
+ */
 function checkDeviceType() {
     if (window.innerWidth < 600) { // Adjust this value based on your design needs
         document.getElementById('startButton').style.display = 'block';
@@ -312,7 +314,10 @@ document.getElementById('startButton').addEventListener('click', function() {
 window.addEventListener('resize', checkDeviceType); // Adjust UI based on window size changes
 checkDeviceType(); // Initial check on load
 
-// Modify the startGame function to be compatible with both desktop and mobile
+
+/**
+ * Modify the startGame function to be compatible with both desktop and mobile
+ */
 function startGame() {
     if (!gameStarted) {
         gameStarted = true;
@@ -322,8 +327,10 @@ function startGame() {
         document.getElementById('startButton').style.display = 'none'; // Hide start button after game starts
     }
 }
-
-// Existing handleKeyPress function modified to handle desktop starts
+/**
+ * Existing handleKeyPress function modified to handle desktop starts
+ * @param {*} event 
+ */
 function handleKeyPress(event) {
     if (!gameStarted && (event.code === 'Space' || event.key === ' ')) {
         startGame();

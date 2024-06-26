@@ -112,7 +112,9 @@ body {
     display: block;
     border-radius: 50%;
     background-color: #73aa25;
-    color: #bfe690;
+    color: #e6e290;
+    font-family: 'VT323';
+    font-size: 25px;
 }
 
 /* phone screen */ 
