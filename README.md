@@ -2,7 +2,7 @@
 
 Played the Snake Game a lot when I was growing up. Made this game because it brings back a lot of good memories, but also it used a lot of the concepts that I learnt in javascript model, such as maniplating the DOM. 
 Overall, the game works well and I found testing the game enjoyable. 
-The game would work on a game however, the event key listeners currently only work on a computuer making the game only for computers.
+Currently the game play only works on a Comptuer. The Game is resposive to fit on different screens.
 ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/7b953e15-cee1-4755-8e2d-2b036d25f139)
 
 
