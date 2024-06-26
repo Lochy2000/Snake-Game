@@ -1,131 +1,172 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# SnakeGame
 
-Welcome USER_NAME,
+Played the Snake Game a lot when I was growing up. Made this game because it brings back a lot of good memories, but also it used a lot of the concepts that I learnt in javascript model, such as maniplating the DOM. 
+Overall, the game works well and I found testing the game enjoyable. 
+Currently the game play only works on a Comptuer. The Game is resposive to fit on different screens.
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/7b953e15-cee1-4755-8e2d-2b036d25f139)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Features
 
-## Gitpod Reminders
+### Game Board, Logo and text
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+#### Game Board 
+Snake is able to move around a 20x20 square. This allows for 400 blocks that the snake can move freely on. 
+The board was made in CSS using the grid-template-coloum / row command. 
 
-`python3 -m http.server`
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/360ebd69-d7fb-4e89-8641-0945bd8fb540)
 
-A blue button should appear to click: _Make Public_,
+#### Loading image and text
+Loading image was created to give a retro pixel style feel for the game. The text gives basic instructions on how to load the game, by pressing spacebar. When space bar is entered event listener removes logo and text.
 
-Another blue button should appear to click: _Open Browser_.
+ ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/9b112ca2-6a83-47b1-8c82-d3b9e56204c6)  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4d27906e-3bf8-4c73-a719-a375931d6c79) 
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+ ## Score 
 
-A blue button should appear to click: _Make Public_,
+ #### Current score 
 
-Another blue button should appear to click: _Open Browser_.
+ The score is updated by taking the snakes current length and turing it into a string using the .tostring() function. Which is then displayed using .padStart (3,'0') giving a three digit score possiblity.
+ 
+ ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/89af6805-34b7-4518-a49d-31c61af42927)
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+ #### High score
 
-To log into the Heroku toolbelt CLI:
+ High Score shows when players snake collides with something. Using the same functions as the score, the high score will only update if the current score is greater than the high score.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+ ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/f768baea-0d91-4dc5-902d-171d5f6866d0)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+## Game play
 
-### Connecting your Mongo database
+#### Movement 
+Event listeners used to listen for arrow keys. Arrows can be used to give directions to snake. Up, down, left and right.
+Game speed was also designed to increase at 25 points, 50 points, 100 points and 150points. This adds difficulty levels to the game, making it progressively harder as you play. 
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+#### Food and Points
 
-------
+Two foods will always be displayed on the screen.
+The food uses three different fruits, which match a higher score bonus. Apple is - two points, Orange - three points, Watermellon – 4 points. 
+Point system. Each point = 1 block. So, if a player got 4 points from the food the snake would increase in size by 4 blocks. This means the ultimate highest game score would be 400 points as you would run out of space on the game board. 
+The food is generated on a random position on the grid using Math.random() and Math.floor(). 
 
-## Release History
+#### Growing 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+The snake continues to create length using unshift function but as it does this it uses pop function to remove this previous length it created. 
+When the snake’s coordinates match the food position it will momentarily stop the pop function which will allow the snake to grow by one square. 
+Then using the .push() function the snakes length array is updated saving its length.
 
-**June 18, 2024,** Add Mongo back into template
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+#### Collision 
 
-**May 28 2024:** Fix Mongo and Links installs
+If the snake collides with any of the borders the round ends. If the snake collides with itself the round ends. 
+Using If statement the consol check the snakes’ coordinates with the grid size and if they match it will mean the snake has collided with the walls. Similar with the body, using a for loop, which uses the snakes array length and if these are the same as the snakes head coordinates it means it collided. Followed by gameRestart function.
 
-**April 26 2024:** Update node version to 16
+#### Game Restart and stop
 
-**September 20 2023:** Update Python version to 3.9.17.
+When the snakes collide's with an obsliticle a restart function resets all the game functions back to the orginal game board. This resets the food position, the snakes current length and adds the game logo and text back to block from none.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Testing 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+<ul>
+ 
+#### <li>Accesiblity</li>
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### <li> HTML </li>
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/d75f7a39-abf3-400b-8a75-2ff764406d7f)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/1df7e417-6bbb-41b2-9ecd-1f0caee9f865)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### <li> CSS </li>
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/bb487ec7-950e-4652-8619-3a62a14f3da5)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4805f9a7-8c18-49d2-849e-7f04c9cbc6e8)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+####  <li>JavaScript</li>
+ <ul>
+  <li> The javascript checker came up with 47 warnings. Majority of which said I should use ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz). However, all the functions worked as required and didn't see any reason in updating the used operators.</li>
+ </ul>    
+ 
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/243a1af1-6cfe-4d75-9221-b700dfa98893)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+####  <li>Search engines</li>
+ <ul>
+  <li> Game runs and functions perfectly across multipe search engines</li>
+ </ul>
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+ ####  <li>Media Query</li>
+ <ul>
+  <li>The game board is designed to fit on all screen sizes. Although the game currently requires a keyboard to function.</li>
+ </ul>
+ 
+ ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4021752a-e0fe-4f5a-ac79-e1a5281d1b6e)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+  
+#### <li>Game testing </li>
+<ul>
+ <li>Made sure every time enter was pressed game would start, removing logo and text from game board.</li>
+ <li>Made sure that both foods loaded randomly and each time.</li>
+ <li>Made sure that the three different foods added the correct points to the snake.</li>
+ <li>Made sure that the high score would update each time it high score was gotten.</li>
+ <li>Made sure the snake would collide with all 4 sides of the box. Triggering gamestop and restart functions</li>
+ <li>Made sure the snake would collide with itself, triggering gamestop and restart.</li>
+ <li>Tested game on Chrome,Microsoft edge and firefly. All functions work.</li>
+</ul>
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+</ul>
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Bugs
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Collision bug which caused the snake to go through food and not de spawning it. Fixing Collision Detection Bug:
+•	There was a typo in the checkCollision function where snake.y should be snake[i].y.
+#### Food spawning on snake. Solution:
+•	Added snake coordinates to generateFood function. This meant the food would never spawn on the snakes body no matter how long.
+#### Loading logo on screen under 600 px was too big. Java script functions would override style.css media query. Solution:
+•	Added window.innerwidth >=600  to stopGame function and window.innerwidth< 600 to startGame function.
 
-------
+## Deployment
 
-## FAQ about the uptime script
+#### Version control 
+The game was made using Visual studio code. It was pushed to Github using a remote repository called ‘Snake-Game’
+Git hub commands were used through-out to push the game to the remote repository. The commands used were as follows: 
+<ul>
+<li>Git add . – adds files to staging area</li>
+<li>Git commit -m “  ” – commits changes to local repository to await to be pushed to Github</li>
+<li>Git push – this pushes all code to remote repository stored on Github</li> 
+</ul>
 
-**Why have you added this script?**
+#### Deployement to GitHub Page
+Site was deployed to github pages. To make sure game would function properly. This is done as follows: 
+<ul>
+<li>In the ‘Snake-Game’ repository navigate to setting</li>
+<li>In pages on settings used the drop-down menu, to select master branch and save.</li>
+<li>Once saved a live link is provided which the game can be played on.</li>
+</ul>
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+#### Cloning of repository locally 
+<ul>
+<li>Find the desired repository.</li>
+<li>Locate code button above all project files</li>
+<li>Click on HTTPS and copy repository link.</li>
+<li>I used Visual studios, and pasted the url into the IDE’s terminal</li>
+</ul>
 
-**How will this affect me?**
+## Credits
+Thankyou to spence my mentor for the support, helping with various troubleshooting problems and explaining some of the JavaScript concepts. Also, thank you to my friend Max who tested this game by playing for any issues.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+#### Content
+<ul>
+<li>The main inspiration for this game came from Freedcodecamp tutorial walk through. Most of the code used in the HTML,CSS and Javascript were takin from this tutorial.
+[https://www.youtube.com/watch?v=uyhzCBEGaBY ](https://www.youtube.com/watch?v=uyhzCBEGaBY) </li>
+<li>Also, code institute lessons in If/Else statement, switch statements and for loops, were useful for understand the concepts.</li>
+<li>Additionally, W3Shools and Developer-Mozilla were also useful for explaining various functions.</li>
+</ul>
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+#### Media 
+<ul>
+ <li> All image came of Canva. The background image was AI generated. The food images were stock photos. And the Snake was designed on Canva builder.</li>
+</ul>
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
