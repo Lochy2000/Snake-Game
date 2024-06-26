@@ -295,42 +295,54 @@ function updateHighScore() {
     highScoreText.style.display = 'block';
 }
 
-// Handle touch events for mobile devices
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
-
-board.addEventListener('touchstart', (event) => {
-    const touch = event.touches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-});
-
-board.addEventListener('touchend', (event) => {
-    const touch = event.changedTouches[0];
-    touchEndX = touch.clientX;
-    touchEndY = touch.clientY;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const deltaX = touchEndX - touchStartX;
-    const deltaY = touchEndY - touchStartY;
-    const absDeltaX = Math.abs(deltaX);
-    const absDeltaY = Math.abs(deltaY);
-
-    if (absDeltaX > absDeltaY) {
-        if (deltaX > 0 && direction !== 'left') {
-            direction = 'right';
-        } else if (deltaX < 0 && direction !== 'right') {
-            direction = 'left';
-        }
+// Show start button on mobile devices
+function checkDeviceType() {
+    if (window.innerWidth < 600) { // Adjust this value based on your design needs
+        document.getElementById('startButton').style.display = 'block';
     } else {
-        if (deltaY > 0 && direction !== 'up') {
-            direction = 'down';
-        } else if (deltaY < 0 && direction !== 'down') {
-            direction = 'up';
+        document.getElementById('startButton').style.display = 'none';
+    }
+}
+
+// Event listener for the start button
+document.getElementById('startButton').addEventListener('click', function() {
+    startGame();
+});
+
+window.addEventListener('resize', checkDeviceType); // Adjust UI based on window size changes
+checkDeviceType(); // Initial check on load
+
+// Modify the startGame function to be compatible with both desktop and mobile
+function startGame() {
+    if (!gameStarted) {
+        gameStarted = true;
+        instructionText.style.display = 'none';
+        logo.style.display = 'none';
+        resetGameInterval();
+        document.getElementById('startButton').style.display = 'none'; // Hide start button after game starts
+    }
+}
+
+// Existing handleKeyPress function modified to handle desktop starts
+function handleKeyPress(event) {
+    if (!gameStarted && (event.code === 'Space' || event.key === ' ')) {
+        startGame();
+    } else {
+        switch (event.key) {
+            case 'ArrowUp':
+                direction = 'up';
+                break;
+            case 'ArrowDown':
+                direction = 'down';
+                break;
+            case 'ArrowLeft':
+                direction = 'left';
+                break;
+            case 'ArrowRight':
+                direction = 'right';
+                break;
         }
     }
 }
+
+document.addEventListener('keydown', handleKeyPress);

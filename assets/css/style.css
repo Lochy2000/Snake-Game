@@ -102,6 +102,18 @@ body {
 #logo {
     position: absolute;
 }
+#startButton {
+    font-size: 20px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border-radius: 50%;
+    background-color: #73aa25;
+    color: #bfe690;
+}
 
 /* phone screen */ 
 @media only screen and (max-width: 600px) {
@@ -144,6 +156,7 @@ body {
         text-transform: capitalize;
         padding: 15px;
         margin: 0;
+        display: none;
     }
 
     .apple {
