@@ -238,40 +238,42 @@ function updateHighScore() {
     highScoreText.style.display = 'block';
 }
 
-// Touch controls for mobile
-function handleTouchStart(event) {
+// Handle touch events for mobile devices
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+board.addEventListener('touchstart', (event) => {
     const touch = event.touches[0];
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
-}
+});
 
-function handleTouchMove(event) {
-    if (!gameStarted) return;
-    const touch = event.touches[0];
+board.addEventListener('touchend', (event) => {
+    const touch = event.changedTouches[0];
     touchEndX = touch.clientX;
     touchEndY = touch.clientY;
-}
+    handleSwipe();
+});
 
-function handleTouchEnd() {
-    if (!gameStarted) return;
+function handleSwipe() {
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
 
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (deltaX > 0) {
+    if (absDeltaX > absDeltaY) {
+        if (deltaX > 0 && direction !== 'left') {
             direction = 'right';
-        } else {
+        } else if (deltaX < 0 && direction !== 'right') {
             direction = 'left';
         }
     } else {
-        if (deltaY > 0) {
+        if (deltaY > 0 && direction !== 'up') {
             direction = 'down';
-        } else {
+        } else if (deltaY < 0 && direction !== 'down') {
             direction = 'up';
         }
     }
 }
-
-document.addEventListener('touchstart', handleTouchStart);
-document.addEventListener('touchmove', handleTouchMove);
-document.addEventListener('touchend', handleTouchEnd);
