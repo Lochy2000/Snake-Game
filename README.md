@@ -153,7 +153,7 @@ Site was deployed to github pages. To make sure game would function properly. Th
 ## Credits
 Thankyou to spence my mentor for the support, helping with various troubleshooting problems and explaining some of the JavaScript concepts. Also, thank you to my friend Max who tested this game by playing for any issues.
 
-#### Media
+#### Content
 <ul>
 <li>The main inspiration for this game came from Freedcodecamp tutorial walk through. Most of the code used in the HTML,CSS and Javascript were takin from this tutorial.
 [https://www.youtube.com/watch?v=uyhzCBEGaBY ](https://www.youtube.com/watch?v=uyhzCBEGaBY) </li>
@@ -161,7 +161,10 @@ Thankyou to spence my mentor for the support, helping with various troubleshooti
 <li>Additionally, W3Shools and Developer-Mozilla were also useful for explaining various functions.</li>
 </ul>
 
-
+#### Media 
+<ul>
+ <li> All image came of Canva. The background image was AI generated. The food images were stock photos. And the Snake was designed on Canva builder.</li>
+</ul>
 
 
 
