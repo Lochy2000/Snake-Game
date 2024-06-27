@@ -306,11 +306,26 @@ function checkDeviceType() {
     if (window.innerWidth < 600) { // less the 600px the screen will display the start button for phones.
         startButton.style.display = 'block';
         mobileControls.style.display = 'flex';
+        toggleKeyboardListener(false); // Disable keyboard listener
     } else {
         startButton.style.display = 'none';
         mobileControls.style.display = 'none';
+        toggleKeyboardListener(true); // Enable keyboard listener
     }
 }
+
+/**
+ * Function to toggle keyboard event listener based on screen size
+ * @param {*} enable 
+ */
+function toggleKeyboardListener(enable) {
+    if (enable) {
+        document.addEventListener('keydown', handleKeyPress);
+    } else {
+        document.removeEventListener('keydown', handleKeyPress);
+    }
+}
+
 /**
  * Event listener for the start button
  */
@@ -321,12 +336,17 @@ startButton.addEventListener('click', function () {
 /**
  * Event listeners for mobile buttons
  */
-leftButton.addEventListener('click', function () {
-    if (direction !== 'right') direction = 'left';
+// Event listeners for mobile control buttons
+leftButton.addEventListener('click', function() {
+    if (gameStarted && direction !== 'right') {
+        direction = 'left';
+    }
 });
 
-rightButton.addEventListener('click', function () {
-    if (direction !== 'left') direction = 'right';
+rightButton.addEventListener('click', function() {
+    if (gameStarted && direction !== 'left') {
+        direction = 'right';
+    }
 });
 
 window.addEventListener('resize', checkDeviceType); // Change interface based on different screen size
