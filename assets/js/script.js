@@ -1,6 +1,7 @@
 // define HTML elements
 const board = document.getElementById('game-board');
 const instructionText = document.getElementById('instruction-text');
+const buttonStart = document.getElementById('startButton');
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
@@ -185,11 +186,9 @@ function resetGameInterval() {
 function startGame() {
     gameStarted = true; // keep track of running game, for pressing enter to start game
     instructionText.style.display = 'none';
-    logo.style.display = 'none'; // removes loading logo and text when the game starts
+    logo.style.display = 'none'; 
+    buttonStart.style.display = 'none';
     resetGameInterval();
-    if (window.innerWidth < 600) {
-        logo.style.display = 'none'; // removes loading logo when the game starts for screens smaller than 600px
-    }
 }
 
 /**
@@ -277,10 +276,13 @@ function updateScore() {
 function stopGame() {
     clearInterval(gameInterval);
     gameStarted = false;
-    instructionText.style.display = 'block';
     if (window.innerWidth >= 600) {
         logo.style.display = 'block';
+        instructionText.style.display = 'block';
     } // this only displays the logo gif on screens larger then 600px
+    if (window.innerWidth <= 600) {
+        buttonStart.style.display = 'block';
+    } // this only displays the start button on screens smaller then 600px
 }
 
 /**
@@ -294,62 +296,22 @@ function updateHighScore() {
     }
     highScoreText.style.display = 'block';
 }
-
 /**
  * Show start button on mobile devices
  */
 function checkDeviceType() {
-    if (window.innerWidth < 600) { // Adjust this value based on your design needs
-        document.getElementById('startButton').style.display = 'block';
+    if (window.innerWidth < 600) { // less the 600px the screen will display the start button for phones.
+        startButton.style.display = 'block';
     } else {
-        document.getElementById('startButton').style.display = 'none';
+        startButton.style.display = 'none';
     }
 }
-
-// Event listener for the start button
-document.getElementById('startButton').addEventListener('click', function() {
+/**
+ * Event listener for the start button
+ */
+startButton.addEventListener('click', function () {
     startGame();
 });
 
 window.addEventListener('resize', checkDeviceType); // Adjust UI based on window size changes
 checkDeviceType(); // Initial check on load
-
-
-/**
- * Modify the startGame function to be compatible with both desktop and mobile
- */
-function startGame() {
-    if (!gameStarted) {
-        gameStarted = true;
-        instructionText.style.display = 'none';
-        logo.style.display = 'none';
-        resetGameInterval();
-        document.getElementById('startButton').style.display = 'none'; // Hide start button after game starts
-    }
-}
-/**
- * Existing handleKeyPress function modified to handle desktop starts
- * @param {*} event 
- */
-function handleKeyPress(event) {
-    if (!gameStarted && (event.code === 'Space' || event.key === ' ')) {
-        startGame();
-    } else {
-        switch (event.key) {
-            case 'ArrowUp':
-                direction = 'up';
-                break;
-            case 'ArrowDown':
-                direction = 'down';
-                break;
-            case 'ArrowLeft':
-                direction = 'left';
-                break;
-            case 'ArrowRight':
-                direction = 'right';
-                break;
-        }
-    }
-}
-
-document.addEventListener('keydown', handleKeyPress);
