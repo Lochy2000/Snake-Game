@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: "VT323", monospace;
     background-color: #273e06;
-    background-image: url(/assets/images/snake-bg2.jpg);
+    background: url(/images/snake-logo.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
