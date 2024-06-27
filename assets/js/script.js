@@ -279,11 +279,11 @@ function updateScore() {
 function stopGame() {
     clearInterval(gameInterval);
     gameStarted = false;
-    if (window.innerWidth >= 600) {
+    if (window.innerWidth >= 768) {
         logo.style.display = 'block';
         instructionText.style.display = 'block';
     } // this only displays the logo gif on screens larger then 600px
-    if (window.innerWidth <= 600) {
+    if (window.innerWidth <= 768) {
         buttonStart.style.display = 'block';
     } // this only displays the start button on screens smaller then 600px
 }
@@ -303,7 +303,7 @@ function updateHighScore() {
  * Show start button on mobile devices
  */
 function checkDeviceType() {
-    if (window.innerWidth < 600) { // less the 600px the screen will display the start button for phones.
+    if (window.innerWidth < 768) { // less the 600px the screen will display the start button for phones.
         startButton.style.display = 'block';
         mobileControls.style.display = 'flex';
         toggleKeyboardListener(false); // Disable keyboard listener
@@ -329,7 +329,7 @@ function toggleKeyboardListener(enable) {
 /**
  * Event listener for the start button
  */
-startButton.addEventListener('click', function () {
+startButton.addEventListener('click', function() {
     startGame();
 });
 
