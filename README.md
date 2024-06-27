@@ -66,9 +66,10 @@ When the snakes collide's with an obsliticle a restart function resets all the g
 
 #### Phone 
 
-Currently the phone version can start with a start button. Although a swipe function was attempted to be add it didn't function on the phone as meant. The game will still work on a phone it just needs a keyboard attached to it.
+Currently the phone version can start with a start button. The phone version has two buttons, left and right. The event listener is similar to the keyboard, expect it only has a left and right input. This means when the snake is moving horizontal to the board, the buttons will move the snake up and down. Otherwise if the snake is moving vertical the buttons will move left and right.
 
-![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/edaf19ec-24e7-4faf-80de-21a28427e444)
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/364cdc26-2fc9-4797-9aa0-8762c2112441)
+
 
 
 ## Testing 
@@ -105,7 +106,7 @@ Currently the phone version can start with a start button. Although a swipe func
 
  ####  <li>Media Query</li>
  <ul>
-  <li>The game board is designed to fit on all screen sizes. Although the game currently requires a keyboard to function.</li>
+  <li>The game board is designed to fit on all screen sizes. On any screen less then 768px the game layout changes to buttons. This allows for a touch version of the game that will be mobile phone compatible.</li>
  </ul>
  
  ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4021752a-e0fe-4f5a-ac79-e1a5281d1b6e)
