@@ -109,7 +109,8 @@ Currently the phone version can start with a start button. The phone version has
   <li>The game board is designed to fit on all screen sizes. On any screen less then 768px the game layout changes to buttons. This allows for a touch version of the game that will be mobile phone compatible.</li>
  </ul>
  
- ![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/4021752a-e0fe-4f5a-ac79-e1a5281d1b6e)
+![image](https://github.com/Lochy2000/Snake-Game/assets/164012429/c5fe19a7-9b81-46d6-add0-e8e99b091a23)
+
 
   
 #### <li>Game testing </li>
