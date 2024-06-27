@@ -5,6 +5,9 @@ const buttonStart = document.getElementById('startButton');
 const logo = document.getElementById('logo');
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
+const leftButton = document.getElementById('leftButton');
+const rightButton = document.getElementById('rightButton');
+const mobileControls = document.getElementById('mobile-controls');
 
 // Define game variables
 const gridSize = 20;
@@ -302,8 +305,10 @@ function updateHighScore() {
 function checkDeviceType() {
     if (window.innerWidth < 600) { // less the 600px the screen will display the start button for phones.
         startButton.style.display = 'block';
+        mobileControls.style.display = 'flex';
     } else {
         startButton.style.display = 'none';
+        mobileControls.style.display = 'none';
     }
 }
 /**
@@ -313,5 +318,16 @@ startButton.addEventListener('click', function () {
     startGame();
 });
 
-window.addEventListener('resize', checkDeviceType); // Adjust UI based on window size changes
+/**
+ * Event listeners for mobile buttons
+ */
+leftButton.addEventListener('click', function () {
+    if (direction !== 'right') direction = 'left';
+});
+
+rightButton.addEventListener('click', function () {
+    if (direction !== 'left') direction = 'right';
+});
+
+window.addEventListener('resize', checkDeviceType); // Change interface based on different screen size
 checkDeviceType(); // Initial check on load
