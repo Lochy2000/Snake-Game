@@ -336,16 +336,28 @@ startButton.addEventListener('click', function () {
 /**
  * Event listeners for mobile buttons
  */
-// Event listeners for mobile control buttons
+// 
 leftButton.addEventListener('click', function() {
-    if (gameStarted && direction !== 'right') {
-        direction = 'left';
+    if (gameStarted) {
+        if (direction === 'up' || direction === 'down') {
+            direction = 'left';
+        } else if (direction === 'right') {
+            direction = 'up';
+        } else if (direction === 'left') {
+            direction = 'down';
+        }
     }
 });
 
 rightButton.addEventListener('click', function() {
-    if (gameStarted && direction !== 'left') {
-        direction = 'right';
+    if (gameStarted) {
+        if (direction === 'up' || direction === 'down') {
+            direction = 'right';
+        } else if (direction === 'left') {
+            direction = 'up';
+        } else if (direction === 'right') {
+            direction = 'down';
+        }
     }
 });
 
